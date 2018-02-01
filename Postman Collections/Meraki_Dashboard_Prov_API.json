@@ -68,7 +68,7 @@
         },
         {
           "_postman_id": "1a0c4882-119c-f324-3150-6e28b1b4cc6b",
-          "name": "Admins - Create a new dashboard administrator copy",
+          "name": "Admins - Create a new dashboard administrator for all orgs",
           "request": {
             "method": "POST",
             "header": [
