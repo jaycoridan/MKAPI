@@ -5019,6 +5019,180 @@
             "description": "## HTTP REQUEST\n```\nPUT /organizations/[id]/thirdPartyVPNPeers\n```\n\n## PARAMETERS\n\n**parameters**|**Description of the parameter**\n :-------------: |:-------------:\nname|The name of the VPN peer\npublicIp|The public IP of the VPN peer\nprivateSubnets|The list of the private subnets of the VPN peer\nsecret|The shared secret with the VPN peer\n\n### SAMPLE REQUEST\n```\ncurl -L -H 'X-Cisco-Meraki-API-Key: [key]' -X PUT -H 'Content-Type: application/json' --data-binary '[{\"name\":\"Your peer\",\"publicIp\":\"192.168.0.1\",\"privateSubnets\":[\"172.168.0.0/16\",\"172.169.0.0/16\"],\"secret\":\"asdf1234\"}]' 'https://api.meraki.com/api/v0/organizations/[id]/thirdPartyVPNPeers'\n```\n### SAMPLE RESPONSE\n```\nSuccessful HTTP Status: 200\n[\n  {\n    \"name\":\"Your peer\",\n    \"publicIp\":\"192.168.0.1\",\n    \"privateSubnets\":[\n      \"172.168.0.0/16\",\n      \"172.169.0.0/16\"\n    ],\n    \"secret\":\"asdf1234\"\n  }\n]\n```"
           },
           "response": []
+        },
+        {
+          "_postman_id": "125dc4b0-d444-2731-8f86-41b427468556",
+          "name": "Organizations - List organizations this user has access to copy",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "207a0a13-6095-4d0f-9f61-47d8f262e6f8",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.variables.get(\"variable_key\");"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-Cisco-Meraki-API-Key",
+                "value": "{{X-Cisco-Meraki-API-Key}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Turkcell",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "https://dashboard.meraki.com/api/v0/organizations",
+            "description": "## HTTP REQUEST\n```\nGET /organizations\n```\n\n## PARAMETERS\n**None**\n\n## SAMPLE REQUEST\n```\ncurl -L -H 'X-Cisco-Meraki-API-Key: <key>' -X GET -H 'Content-Type: application/json' 'https://api.meraki.com/api/v0/organizations'\n```\n## SAMPLE RESPONSE\n```\nSuccessful HTTP Status: 200\n[\n  {\n    \"id\":1234,\n    \"name\":\"My org\"\n  }\n]\n```"
+          },
+          "response": [
+            {
+              "id": "5da243ec-3080-c6dd-0180-a1e2abcebfd6",
+              "name": "get Org List",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-Cisco-Meraki-API-Key",
+                    "value": "{{X-Cisco-Meraki-API-Key}}"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "Turkcell",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": "https://dashboard.meraki.com/api/v0/organizations",
+                "description": ""
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "name": "Cache-Control",
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate",
+                  "description": ""
+                },
+                {
+                  "name": "Connection",
+                  "key": "Connection",
+                  "value": "keep-alive",
+                  "description": ""
+                },
+                {
+                  "name": "Content-Encoding",
+                  "key": "Content-Encoding",
+                  "value": "gzip",
+                  "description": ""
+                },
+                {
+                  "name": "Content-Type",
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8",
+                  "description": ""
+                },
+                {
+                  "name": "Date",
+                  "key": "Date",
+                  "value": "Sun, 02 Jul 2017 00:37:22 GMT",
+                  "description": ""
+                },
+                {
+                  "name": "Expires",
+                  "key": "Expires",
+                  "value": "Fri, 01 Jan 1990 00:00:00 GMT",
+                  "description": ""
+                },
+                {
+                  "name": "Pragma",
+                  "key": "Pragma",
+                  "value": "no-cache",
+                  "description": ""
+                },
+                {
+                  "name": "Public-Key-Pins-Report-Only",
+                  "key": "Public-Key-Pins-Report-Only",
+                  "value": "max-age=1200; pin-sha256=\"2V5tfxXMLkn2kVg/Iv8FqL4JHcNVGEUFK27oSMYhHEU=\"; pin-sha256=\"8Rw90Ej3Ttt8RRkrg+WYDS9n7IS03bk5bjP/UXPtaY8=\"; pin-sha256=\"3YQf+D42t1/pQJhWTwYLRnFVnbBNXf9W5S6dmwq2+3g=\"; pin-sha256=\"klO23nT2ehFDXCfx3eHTDRESMz3asj1muO+4aIdjiuY=\"; pin-sha256=\"fake+hpkp+key+for+testing+report+only+QWERT=\"; includeSubDomains; report-uri=\"https://therealmerakidashboard.report-uri.io/r/default/hpkp/reportOnly\"",
+                  "description": ""
+                },
+                {
+                  "name": "Server",
+                  "key": "Server",
+                  "value": "nginx",
+                  "description": ""
+                },
+                {
+                  "name": "Strict-Transport-Security",
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=15552000; includeSubDomains",
+                  "description": ""
+                },
+                {
+                  "name": "Transfer-Encoding",
+                  "key": "Transfer-Encoding",
+                  "value": "chunked",
+                  "description": ""
+                },
+                {
+                  "name": "Vary",
+                  "key": "Vary",
+                  "value": "Accept-Encoding",
+                  "description": ""
+                },
+                {
+                  "name": "X-Frame-Options",
+                  "key": "X-Frame-Options",
+                  "value": "sameorigin",
+                  "description": ""
+                },
+                {
+                  "name": "X-Rack-Cache",
+                  "key": "X-Rack-Cache",
+                  "value": "miss",
+                  "description": ""
+                },
+                {
+                  "name": "X-Request-Id",
+                  "key": "X-Request-Id",
+                  "value": "3430d3b55bff802652297aa60f69db6e",
+                  "description": ""
+                },
+                {
+                  "name": "X-Runtime",
+                  "key": "X-Runtime",
+                  "value": "0.120140",
+                  "description": ""
+                },
+                {
+                  "name": "X-UA-Compatible",
+                  "key": "X-UA-Compatible",
+                  "value": "IE=Edge,chrome=1",
+                  "description": ""
+                }
+              ],
+              "cookie": [],
+              "responseTime": "389",
+              "body": "[{\"id\":537758,\"name\":\"Meraki Live Demo\",\"samlConsumerUrl\":null,\"samlConsumerUrls\":[]},{\"id\":549236,\"name\":\"Meraki Live Sandbox\",\"samlConsumerUrl\":\"https://n149.meraki.com/saml/login/-t35Mb/TvUzhbJtIRna\",\"samlConsumerUrls\":[\"https://n149.meraki.com/saml/login/-t35Mb/TvUzhbJtIRna\"]},{\"id\":646829496481088375,\"name\":\"mirakel test\"}]"
+            }
+          ]
         }
       ]
     },
